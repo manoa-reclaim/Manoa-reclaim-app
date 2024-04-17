@@ -19,7 +19,7 @@ const NavBar = () => {
           <Container>
             <Row>
               <Col>
-                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px"/>
+                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px" />
               </Col>
               <Col>
                 <h5>University of Hawaii</h5>
