@@ -6,7 +6,7 @@ import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Stuffs } from '../../api/stuff/Stuff';
 
-/* Renders a table containing all of the LostItem documents. Use <LostItemItem> to render each row. */
+/* Renders a table containing all of the LostItem documents. Use <StuffItem> to render each row. */
 const SearchLostItem = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, stuffs } = useTracker(() => {
