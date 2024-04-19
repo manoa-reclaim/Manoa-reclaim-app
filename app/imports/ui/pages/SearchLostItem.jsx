@@ -21,7 +21,7 @@ const SearchLostItem = () => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
-            <h2>Search Lost Items</h2>
+            <h2>Search for your lost items here</h2>
           </Col>
           <Form>
             <Form.Group controlId="description">
@@ -39,8 +39,8 @@ const SearchLostItem = () => {
                 <th>Name</th>
                 <th>Color</th>
                 <th>Date Lost</th>
-                <th>Description</th>
                 <th>Image</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
