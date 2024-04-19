@@ -1,35 +1,43 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Form, Row, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import StuffItem from '../components/StuffItem';
-import LoadingSpinner from '../components/LoadingSpinner';
+import LoadingSpinner from '../components/LoadingSpinner'; // Import LoadingSpinner component
 import { Stuffs } from '../../api/stuff/Stuff';
 
-/* Renders a table containing all of the LostItem documents. Use <StuffItem> to render each row. */
 const SearchLostItem = () => {
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, stuffs } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to LostItem documents.
     const subscription = Meteor.subscribe(Stuffs.userPublicationName);
-    // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the LostItem documents
     const stuffItems = Stuffs.collection.find({}).fetch();
     return {
       stuffs: stuffItems,
       ready: rdy,
     };
   }, []);
-  return (ready ? (
+
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+
+  return (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
             <h2>Search Lost Items</h2>
           </Col>
+          <Form>
+            <Form.Group controlId="description">
+              <Form.Label>Description of Lost Item:</Form.Label>
+              <Form.Control as="textarea" rows="3" />
+            </Form.Group>
+            <Form.Group controlId="image">
+              <Form.Label>Insert Image (optional):</Form.Label>
+              <Form.Control type="file" />
+            </Form.Group>
+          </Form>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -47,7 +55,7 @@ const SearchLostItem = () => {
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />);
+  );
 };
 
 export default SearchLostItem;
