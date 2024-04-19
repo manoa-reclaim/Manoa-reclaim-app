@@ -48,7 +48,7 @@ const NavBar = () => {
                   Sign
                   in
                 </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
+                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/uhsignup">
                   <PersonPlusFill />
                   Sign
                   up
