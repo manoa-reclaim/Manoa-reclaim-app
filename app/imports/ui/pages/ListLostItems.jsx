@@ -7,7 +7,7 @@ import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const RegisterLostItem = () => {
+const ListLostItems = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, stuffs } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -28,16 +28,18 @@ const RegisterLostItem = () => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
-            <h2>Register Lost Item Here</h2>
+            <h2>Lost Item List</h2>
           </Col>
           <Table striped bordered hover>
             <thead>
-              <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Condition</th>
-                <th>Edit</th>
-              </tr>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Email</th>
+              <th>Description</th>
+              <th>Location</th>
+              <th>Edit</th>
+            </tr>
             </thead>
             <tbody>
               {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
@@ -49,4 +51,4 @@ const RegisterLostItem = () => {
   ) : <LoadingSpinner />);
 };
 
-export default RegisterLostItem;
+export default ListLostItems;

@@ -19,7 +19,7 @@ const NavBar = () => {
           <Container>
             <Row>
               <Col>
-                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px"/>
+                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px" />
               </Col>
               <Col>
                 <h5>University of Hawaii</h5>
@@ -32,9 +32,8 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Stuff</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">List Stuff</Nav.Link>,
-              <Nav.Link id="register-item-nav" as={NavLink} to="/register" key="register">Register Lost Item</Nav.Link>,
+              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Register Lost Item</Nav.Link>,
+              <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">List Lost Items</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
               <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
