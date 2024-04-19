@@ -7,11 +7,12 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
-import RegisterLostItems from '../pages/RegisterLostItems';
-import ListLostItems from '../pages/ListLostItems';
+import AddStuff from '../pages/AddStuff';
+import RegisterLostItem from '../pages/RegisterLostItems';
+import SearchLostItem from '../pages/SearchLostItem';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
-import SignUp from '../pages/SignUp';
+import UhSignUp from '../pages/UhSignUp';
 import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
@@ -33,11 +34,13 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/uhsignup" element={<UhSignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListLostItems /></ProtectedRoute>} />
-          <Route path="/add" element={<ProtectedRoute><RegisterLostItems /></ProtectedRoute>} />
+          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+          <Route path="/register" element={<ProtectedRoute><RegisterLostItem /></ProtectedRoute>} />
+          <Route path="/search" element={<ProtectedRoute><SearchLostItem /></ProtectedRoute>} />
+          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
