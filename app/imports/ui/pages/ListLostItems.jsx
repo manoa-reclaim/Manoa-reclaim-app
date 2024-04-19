@@ -32,14 +32,14 @@ const ListLostItems = () => {
           </Col>
           <Table striped bordered hover>
             <thead>
-            <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Email</th>
-              <th>Description</th>
-              <th>Location</th>
-              <th>Edit</th>
-            </tr>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Edit</th>
+              </tr>
             </thead>
             <tbody>
               {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
