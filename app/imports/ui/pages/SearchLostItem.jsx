@@ -16,12 +16,7 @@ const SearchLostItem = () => {
       ready: rdy,
     };
   }, []);
-
-  if (!ready) {
-    return <LoadingSpinner />;
-  }
-
-  return (
+  return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
@@ -55,7 +50,7 @@ const SearchLostItem = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default SearchLostItem;
