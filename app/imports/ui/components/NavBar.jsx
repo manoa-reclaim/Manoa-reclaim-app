@@ -19,11 +19,11 @@ const NavBar = () => {
           <Container>
             <Row>
               <Col>
-                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px" />
+                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="75px" />
               </Col>
               <Col>
                 <h5>University of Hawaii</h5>
-                <h2>Manoa Reclaim</h2>
+                <h3>Manoa Reclaim</h3>
               </Col>
             </Row>
           </Container>
