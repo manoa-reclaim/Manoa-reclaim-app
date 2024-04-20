@@ -5,13 +5,13 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 const Landing = () => (
   <Container id="landing-page" fluid className="py-3">
     <Row className="align-middle text-center">
-      <Col xs={8} className="d-flex flex-column justify-content-center">
+      <Col sm={8} className="d-flex flex-column justify-content-center">
         <h1>Welcome to Manoa Reclaim</h1>
         <p>Work in Progress!</p>
       </Col>
     </Row>
     <Row>
-      <Col md={8} className="py-3 text-center">
+      <Col sm={8} className="py-3 text-center">
         <p>Found something someone may have lost? Make sure to drop it off at the Hamilton Library!</p>
         <p>Help us get it back to the correct owner!</p>
       </Col>
@@ -19,10 +19,12 @@ const Landing = () => (
         <Image src="" width="150px" alt="Card Example" />
       </Col>
     </Row>
-    <Row className="align-middle">
-      <Col>
+    <Row className="align-middle text-center">
+      <Col sm={4}>
         <Image src="" width="150px" alt="log in or sign up page image" />
-        <p> User can log in or sign up from right up button or crick <a href="">here</a></p>
+      </Col>
+      <Col sm={8} className="py-3 text-center">
+        <p> User can log in or sign up from right up button or crick <a href="https://example.com">here</a></p>
         <p>If you'd like to learn more about how to use it, please visit <a href="https://manoa-reclaim.github.io/">our homepage</a>.</p>
       </Col>
     </Row>
