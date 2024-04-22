@@ -1,52 +1,43 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Stuffs } from '../../api/stuff/Stuff';
-import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { LostItems } from '../../api/contact/LostItems';
+import LostItem from '../components/LostItem';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListStuff = () => {
+const ListItems = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, stuffs } = useTracker(() => {
+  const { ready, lostItems } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Stuffs.userPublicationName);
+    const subscription = Meteor.subscribe(LostItems.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const stuffItems = Stuffs.collection.find({}).fetch();
+    const Items = LostItems.collection.find({}).fetch();
     return {
-      stuffs: stuffItems,
+      lostItems: Items,
       ready: rdy,
     };
   }, []);
+
   return (ready ? (
     <Container className="py-3">
       <Row className="justify-content-center">
-        <Col md={7}>
+        <Col md={10}>
           <Col className="text-center">
-            <h2>List Stuff</h2>
+            <h2>Lost Items</h2>
           </Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Condition</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-            </tbody>
-          </Table>
+          <Row xs={1} md={2} lg={3} className="g-4">
+            {lostItems.map((lostItem) => (<Col key={lostItem._id}><LostItem lostItem={lostItem} /></Col>))}
+          </Row>
         </Col>
       </Row>
     </Container>
   ) : <LoadingSpinner />);
 };
 
-export default ListStuff;
+export default ListItems;
