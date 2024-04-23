@@ -1,4 +1,4 @@
-name: Manoa Reclaim App
+name: manoa-reclaim-app
 
 on:
   push:
