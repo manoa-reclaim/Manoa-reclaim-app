@@ -62,6 +62,16 @@ class NavBar {
   async gotoRegisterLostItems(testController) {
     await testController.click('#register-item-nav');
   }
+
+  /** Pull down login menu, go to List Lost Items page. */
+  async gotoListLostItems(testController) {
+    await testController.click('#list-item-nav');
+  }
+
+  /** Pull down login menu, go to List Lost Items (Admin) page. */
+  async gotoListLostItemsAdmin(testController) {
+    await testController.click('#list-item-admin-nav');
+  }
 }
 
 export const navBar = new NavBar();

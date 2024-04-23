@@ -4,11 +4,14 @@ import { signoutPage } from './signout.page';
 import { navBar } from './navbar.component';
 import { searchLostItemPage } from './searchlostitem.page';
 import { registerLostItemsPage } from './regiserlostitems.page';
+import { listLostItemsPage } from './listlostitems.page';
+import { listLostItemsAdminPage } from './listlostitemsadmin.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'john@foo.com', password: 'changeme' };
+const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -38,6 +41,33 @@ test('Test the Search Lost Item page', async (testController) => {
   await searchLostItemPage.typeDescription(testController, 'A detailed description of the lost item.');
   await searchLostItemPage.uploadFile(testController, '../public/images/wallet-example.jpg');
 });
+
+test('Test that Item List page shows up', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoListLostItems(testController);
+  // Check if Item List page is available
+  await listLostItemsPage.isDisplayed(testController);
+});
+
+test('Test that Item List (Admin) page shows up', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, credentials.password);
+  await navBar.gotoListLostItemsAdmin(testController);
+  // Check if Item List page is available
+  await listLostItemsAdminPage.isDisplayed(testController);
+});
+
+// Further testing needed
+/*
+test.only('Test that Edit Lost Item page shows up', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, adminCredentials.username, credentials.password);
+  await navBar.gotoListLostItemsAdmin(testController);
+  // Check if Item List page is available
+  await editLostItemsPage.hasEdit(testController);
+  await editLostItemsPage.isDisplayed(testController);
+}); */
 
 test('Test the Register Lost Items page', async (testController) => {
   await navBar.gotoSignInPage(testController);
