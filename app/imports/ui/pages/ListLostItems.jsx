@@ -38,7 +38,6 @@ const ListLostItems = () => {
                 <th>Email</th>
                 <th>Description</th>
                 <th>Location</th>
-                <th>Edit</th>
               </tr>
             </thead>
             <tbody>

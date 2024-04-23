@@ -30,8 +30,10 @@ const ListStuffAdmin = () => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Quantity</th>
-                <th>Condition</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Location</th>
                 <th>Owner</th>
               </tr>
             </thead>

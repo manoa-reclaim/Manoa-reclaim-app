@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, DateField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -10,7 +10,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   name: String,
-  date: Number,
+  date: String,
   email: String,
   description: {
     type: String,
@@ -57,7 +57,7 @@ const RegisterLostItems = () => {
             <Card>
               <Card.Body>
                 <TextField name="name" />
-                <DateField name="date" />
+                <TextField name="date" />
                 <TextField name="email" />
                 <TextField name="description" />
                 <SelectField name="location" />

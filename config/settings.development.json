@@ -5,7 +5,7 @@
   ],
 
   "defaultData": [
-    { "name": "Basket", "date": 3, "email": "john@foo.com", "description": "woven basket", "location": "other", "owner": "john@foo.com" },
-    { "name": "Boogie Board", "date": 2, "email": "john@foo.com", "description": "big boogie board", "location": "Campus Center","owner": "admin@foo.com" }
+    { "name": "Basket", "date": "4/22", "email": "john@foo.com", "description": "woven basket", "location": "other", "owner": "john@foo.com" },
+    { "name": "Boogie Board", "date": "3/12", "email": "john@foo.com", "description": "big boogie board", "location": "Campus Center","owner": "admin@foo.com" }
   ]
 }
