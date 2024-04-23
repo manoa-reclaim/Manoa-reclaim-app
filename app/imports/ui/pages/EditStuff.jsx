@@ -1,7 +1,7 @@
 import React from 'react';
 import swal from 'sweetalert';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -32,8 +32,8 @@ const EditStuff = () => {
   // console.log('EditStuff', doc, ready);
   // On successful submit, insert the data.
   const submit = (data) => {
-    const { name, quantity, condition } = data;
-    Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    const { name, date, email, description, location, owner } = data;
+    Stuffs.collection.update(_id, { $set: { name, date, email, description, location, owner } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
@@ -47,8 +47,10 @@ const EditStuff = () => {
             <Card>
               <Card.Body>
                 <TextField name="name" />
-                <NumField name="quantity" decimal={null} />
-                <SelectField name="condition" />
+                <TextField name="date" />
+                <TextField name="email" />
+                <TextField name="description" />
+                <SelectField name="location" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
                 <HiddenField name="owner" />

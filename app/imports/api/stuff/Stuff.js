@@ -13,7 +13,7 @@ class StuffsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       name: String,
-      date: Number,
+      date: String,
       email: String,
       description: {
         type: String,
@@ -25,6 +25,7 @@ class StuffsCollection {
         allowedValues: ['POST', 'Lower Campus', 'Hamilton Library', 'Shidler', 'Campus Center', 'other'],
         defaultValue: 'other',
       },
+      owner: String,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
