@@ -52,6 +52,16 @@ class NavBar {
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-sign-up');
   }
+
+  /** Pull down login menu, go to Search Lost Item page. */
+  async gotoSearchLostItemPage(testController) {
+    await testController.click('#search-item-nav');
+  }
+
+  /** Pull down login menu, go to Register Lost Items page. */
+  async gotoRegisterLostItems(testController) {
+    await testController.click('#register-item-nav');
+  }
 }
 
 export const navBar = new NavBar();
