@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
+import { Bag } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const StuffItemAdmin = ({ stuff }) => (
   <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180" alt='Image goes here' />
+    <Card.Header className="d-flex justify-content-center bg-dark">
+      <Bag size={75} className="fs-5" />
+    </Card.Header>
     <Card.Body>
       <Card.Title>{stuff.name}</Card.Title>
       <Card.Text>
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
+        <ul>
+          <li>Date found: {stuff.date}</li>
+          <li>Location found: {stuff.location}</li>
+          <li>Description: {stuff.description}</li>
+        </ul>
       </Card.Text>
-      <Button variant="primary">Go somewhere</Button>
     </Card.Body>
   </Card>
 );
