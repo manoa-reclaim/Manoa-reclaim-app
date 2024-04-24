@@ -22,7 +22,7 @@ const ListStuffAdmin = () => {
     };
   }, []);
   return (ready ? (
-    <Container className="py-3">
+    <Container id="list-lost-items-admin-page" className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
@@ -30,8 +30,10 @@ const ListStuffAdmin = () => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Quantity</th>
-                <th>Condition</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Location</th>
                 <th>Owner</th>
               </tr>
             </thead>
