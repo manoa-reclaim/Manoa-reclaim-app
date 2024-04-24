@@ -5,9 +5,11 @@ class RegisterLostItemsPage {
     this.pageId = '#register-lost-items-page';
     this.pageSelector = Selector(this.pageId);
     this.nameInput = Selector('input[name="name"]');
-    this.dateInput = Selector('input[name="date"]');
     this.emailInput = Selector('input[name="email"]');
     this.descriptionInput = Selector('input[name="description"]');
+    this.daySelect = Selector('input[name="day"]');
+    this.monthSelect = Selector('input[name="month"]');
+    this.yearSelect = Selector('input[name="year"]');
     this.locationSelect = Selector('select[name="location"]');
     this.submitButton = Selector('input[type="submit"][value="Submit"]');
   }
@@ -24,12 +26,6 @@ class RegisterLostItemsPage {
       .typeText(this.nameInput, name, { paste: true });
   }
 
-  async isDateInputDisplayedAndType(testController, date) {
-    await testController
-      .expect(this.dateInput.exists).ok('The date input field should exist')
-      .typeText(this.dateInput, date, { paste: true });
-  }
-
   async isEmailInputDisplayedAndType(testController, email) {
     await testController
       .expect(this.emailInput.exists).ok('The email input should exist')
@@ -40,6 +36,24 @@ class RegisterLostItemsPage {
     await testController
       .expect(this.descriptionInput.exists).ok('The description should exist')
       .typeText(this.descriptionInput, description);
+  }
+
+  async isDayInputDisplayedAndType(testController, day) {
+    await testController
+      .expect(this.daySelect.exists).ok('The day should exist')
+      .click(this.daySelect).click(Selector('option', { text: day }));
+  }
+
+  async isMonthInputDisplayedAndType(testController, month) {
+    await testController
+      .expect(this.monthSelect.exists).ok('The month should exist')
+      .click(this.monthSelect).click(Selector('option', { text: month }));
+  }
+
+  async isYearInputDisplayedAndType(testController, year) {
+    await testController
+      .expect(this.yearSelect.exists).ok('The year should exist')
+      .click(this.yearSelect).click(Selector('option', { text: year }));
   }
 
   async isLocationSelectDisplayedAndSelect(testController, location) {
