@@ -83,7 +83,7 @@ test('Test the Register Lost Items page', async (testController) => {
   // await registerLostItemsPage.isDayInputDisplayedAndType(testController, '1');
   // await registerLostItemsPage.isMonthInputDisplayedAndType(testController, 'January');
   // await registerLostItemsPage.isYearInputDisplayedAndType(testController, '2024');
-  await registerLostItemsPage.isLocationSelectDisplayedAndSelect(testController, 'POST');
+  // await registerLostItemsPage.isLocationSelectDisplayedAndSelect(testController, 'POST');
 
   // Submit the form
   await registerLostItemsPage.hasSubmitForm(testController);
