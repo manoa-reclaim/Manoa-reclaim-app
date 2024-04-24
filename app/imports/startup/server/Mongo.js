@@ -12,7 +12,7 @@ const addData = (data) => {
 // Initialize the StuffsCollection if empty.
 if (Stuffs.collection.find().count() === 0) {
   if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
+    console.log('Creating default item list.');
     Meteor.settings.defaultData.forEach(data => addData(data));
   }
 }

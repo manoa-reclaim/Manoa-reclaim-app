@@ -15,20 +15,18 @@ const ListStuffAdmin = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const items = Stuffs.collection.find({}).fetch();
+    const lostItems = Stuffs.collection.find({}).fetch();
     return {
-      stuffs: items,
+      stuffs: lostItems,
       ready: rdy,
     };
   }, []);
+  // DELETE THIS LIST LATER
   const itemList = [
     { name: 'Basket', date: '4/22', email: 'john@foo.com', description: 'woven basket', location: 'other', owner: 'john@foo.com' },
     { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
-    { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
-    { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
-    { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
-    { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
-    { name: 'Boogie Board', date: '3/12', email: 'john@foo.com', description: 'big boogie board', location: 'Campus Center', owner: 'admin@foo.com' },
+    { name: 'Macbook Air', date: '4/06', email: 'ksutton2@hawaii.edu', description: 'Space Grey model, no case or cover. Wallpaper is a picture of a beach', location: 'Hamilton Library', owner: 'admin@foo.com' },
+    { name: 'Sony Headphones', date: '3/12', email: 'ksutton2@hawaii.edu', description: 'Black WH-1000XM4', location: 'POST', owner: 'admin@foo.com' },
   ];
   return (ready ? (
     <Container id="list-lost-items-admin-page" className="py-3">

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Bag } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const StuffItemAdmin = ({ stuff }) => (
-  <Card style={{ width: '18rem' }}>
+  <Card className="h-100">
     <Card.Header className="d-flex justify-content-center bg-dark">
       <Bag size={75} className="fs-5" />
     </Card.Header>
