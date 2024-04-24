@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -21,18 +21,26 @@ const ListStuffAdmin = () => {
       ready: rdy,
     };
   }, []);
-  const itemList = [
-    { name: 'Basket', quantity: 3, owner: 'john@foo.com', condition: 'excellent' },
-    { name: 'Bicycle', quantity: 2, owner: 'john@foo.com', condition: 'poor' },
-    { name: 'Banana', quantity: 2, owner: 'admin@foo.com', condition: 'good' },
-    { name: 'Boogie Board', quantity: 2, owner: 'admin@foo.com', condition: 'excellent' },
-  ];
   return (ready ? (
-    <Container className="py-3">
+    <Container id="list-lost-items-admin-page" className="py-3">
       <Row className="justify-content-center">
-        <Col>
+        <Col md={7}>
           <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
-
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Owner</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
+            </tbody>
+          </Table>
         </Col>
       </Row>
     </Container>

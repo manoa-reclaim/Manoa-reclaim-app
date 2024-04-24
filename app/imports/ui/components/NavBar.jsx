@@ -13,17 +13,17 @@ const NavBar = () => {
   }), []);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" expand="lg">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           <Container>
             <Row>
               <Col>
-                <Image roundedCircle src="/images/uh-manoa-logo.jpg" alt="UH Manoa Logo" width="150px"/>
+                <Image roundedCircle src="/images/lost-and-found-logo.png" alt="Manoa Reclaim Logo" width="100px" />
               </Col>
               <Col>
                 <h5>University of Hawaii</h5>
-                <h2>Manoa Reclaim</h2>
+                <h3>Manoa Reclaim</h3>
               </Col>
             </Row>
           </Container>
@@ -32,12 +32,12 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
-              <Nav.Link id="add-stuff-nav" as={NavLink} to="/add" key="add">Add Stuff</Nav.Link>,
-              <Nav.Link id="list-stuff-nav" as={NavLink} to="/list" key="list">List Stuff</Nav.Link>,
+              <Nav.Link id="list-item-nav" as={NavLink} to="/list" key="list">Item List</Nav.Link>,
               <Nav.Link id="register-item-nav" as={NavLink} to="/register" key="register">Register Lost Item</Nav.Link>,
+              <Nav.Link id="search-item-nav" as={NavLink} to="/search" key="search">Search Lost Item</Nav.Link>,
             ]) : ''}
             {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-              <Nav.Link id="list-stuff-admin-nav" as={NavLink} to="/admin" key="admin">Admin</Nav.Link>
+              <Nav.Link id="list-item-admin-nav" as={NavLink} to="/admin" key="admin">Item List (Admin)</Nav.Link>
             ) : ''}
           </Nav>
           <Nav className="justify-content-end">
@@ -48,7 +48,7 @@ const NavBar = () => {
                   Sign
                   in
                 </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/signup">
+                <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} to="/uhsignup">
                   <PersonPlusFill />
                   Sign
                   up
