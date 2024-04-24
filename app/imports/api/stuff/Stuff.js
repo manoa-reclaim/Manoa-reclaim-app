@@ -20,6 +20,11 @@ class StuffsCollection {
         optional: true,
         defaultValue: '',
       },
+      image: {
+        type: String,
+        optional: true,
+        defaultValue: '',
+      },
       location: {
         type: String,
         allowedValues: ['POST', 'Lower Campus', 'Hamilton Library', 'Shidler', 'Campus Center', 'other'],
