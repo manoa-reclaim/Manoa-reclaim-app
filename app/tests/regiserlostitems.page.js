@@ -40,13 +40,13 @@ class RegisterLostItemsPage {
 
   async isDayInputDisplayedAndType(testController, day) {
     await testController
-      .expect(this.daySelect.exists).ok('The day input field should exist')
+      .expect(this.daySelect.exists).ok('The day should exist')
       .click(this.daySelect).click(Selector('option', { text: day }));
   }
 
   async isMonthInputDisplayedAndType(testController, month) {
     await testController
-      .expect(this.monthSelect.exists).ok('The month input field should exist')
+      .expect(this.monthSelect.exists).ok('The month should exist')
       .click(this.monthSelect).click(Selector('option', { text: month }));
   }
 
