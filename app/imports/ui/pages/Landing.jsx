@@ -5,9 +5,8 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 const Landing = () => (
   <Container id="landing-page" fluid className="py-3">
     <Row className="align-middle text-center">
-      <Col sm={8} className="d-flex flex-column justify-content-center">
+      <Col className="d-flex flex-column justify-content-center">
         <h1>Welcome to Manoa Reclaim</h1>
-        <p>Work in Progress!</p>
       </Col>
     </Row>
     <Row>
