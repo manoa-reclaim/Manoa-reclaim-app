@@ -7,7 +7,6 @@ class RegisterLostItemsPage {
     this.nameInput = Selector('input[name="name"]');
     this.emailInput = Selector('input[name="email"]');
     this.descriptionInput = Selector('input[name="description"]');
-    this.imageInput = Selector('input[name="image"]');
     this.daySelect = Selector('input[name="day"]');
     this.monthSelect = Selector('input[name="month"]');
     this.yearSelect = Selector('input[name="year"]');
@@ -42,19 +41,19 @@ class RegisterLostItemsPage {
   async isDayInputDisplayedAndType(testController, day) {
     await testController
       .expect(this.daySelect.exists).ok('The day input field should exist')
-      .typeText(this.daySelect).click(Selector('option', { text: day }));
+      .click(this.daySelect).click(Selector('option', { text: day }));
   }
 
   async isMonthInputDisplayedAndType(testController, month) {
     await testController
       .expect(this.monthSelect.exists).ok('The month input field should exist')
-      .typeText(this.monthSelect).click(Selector('option', { text: month }));
+      .click(this.monthSelect).click(Selector('option', { text: month }));
   }
 
   async isYearInputDisplayedAndType(testController, year) {
     await testController
       .expect(this.yearSelect.exists).ok('The year should exist')
-      .typeText(this.yearSelect).click(Selector('option', { text: year }));
+      .click(this.yearSelect).click(Selector('option', { text: year }));
   }
 
   async isLocationSelectDisplayedAndSelect(testController, location) {
