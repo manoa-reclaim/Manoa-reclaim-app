@@ -79,7 +79,7 @@ const SearchLostItem = () => {
   };
 
   return (
-    <Container id="search-lost-item-page" className="py-3">
+    <Container id="register-lost-items-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Register Lost Item</h2></Col>

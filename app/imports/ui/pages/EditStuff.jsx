@@ -94,7 +94,7 @@ const EditStuff = () => {
   };
 
   return ready ? (
-    <Container id="search-lost-item-page" className="py-3">
+    <Container id="edit-lost-items-page" className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Edit Lost Item</h2></Col>
