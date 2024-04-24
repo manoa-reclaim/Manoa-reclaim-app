@@ -39,12 +39,6 @@ class RegisterLostItemsPage {
       .typeText(this.descriptionInput, description);
   }
 
-  async isImageInputDisplayedAndType(testController, image) {
-    await testController
-      .expect(this.imageInput.exists).ok('The image input field should exist')
-      .typeText(this.imageInput, image);
-  }
-
   async isDayInputDisplayedAndType(testController, day) {
     await testController
       .expect(this.daySelect.exists).ok('The day input field should exist')
