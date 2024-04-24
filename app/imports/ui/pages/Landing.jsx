@@ -23,8 +23,8 @@ const Landing = () => (
         <Image src="/images/sign-in.png" width="200px" alt="log in or sign up page image" />
       </Col>
       <Col sm={8} className="py-3 text-center">
-        <p> You can log in from right up button or crick <a href="/signin">here</a></p>
-        <p>If you are first time to visit, please sign up from  right up button or crick <a href="/signup">here</a></p>
+        <p> You can log in from right up button or click <a href="/signin">here</a></p>
+        <p>If you are first time to visit, please sign up from  right up button or click <a href="/signup">here</a></p>
         <p>If you&apos;d like to learn more about how to use it, please visit <a href="https://manoa-reclaim.github.io/">our homepage</a>.</p>
       </Col>
     </Row>
