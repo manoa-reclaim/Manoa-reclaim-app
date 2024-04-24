@@ -78,9 +78,12 @@ test('Test the Register Lost Items page', async (testController) => {
   await registerLostItemsPage.isDisplayed(testController);
   //  Check if elements exist and input the form data
   await registerLostItemsPage.isNameInputDisplayedAndType(testController, 'Wallet');
-  await registerLostItemsPage.isDateInputDisplayedAndType(testController, '04/22/2024');
   await registerLostItemsPage.isEmailInputDisplayedAndType(testController, 'john@foo.com');
   await registerLostItemsPage.isDescriptionInputDisplayedAndType(testController, 'brown, leather has ID of John.');
+  await registerLostItemsPage.isImageInputDisplayedAndType(testController, '');
+  await registerLostItemsPage.isDayInputDisplayedAndType(testController, '1');
+  await registerLostItemsPage.isMonthInputDisplayedAndType(testController, 'January');
+  await registerLostItemsPage.isYearInputDisplayedAndType(testController, '2024');
   await registerLostItemsPage.isLocationSelectDisplayedAndSelect(testController, 'POST');
 
   // Submit the form
