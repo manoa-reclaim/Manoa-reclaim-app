@@ -19,6 +19,7 @@ const SearchLostItem = () => {
     image: {
       type: String,
       optional: true,
+      defaultValue: '',
     },
     month: {
       type: String,
