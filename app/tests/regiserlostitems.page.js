@@ -5,9 +5,12 @@ class RegisterLostItemsPage {
     this.pageId = '#register-lost-items-page';
     this.pageSelector = Selector(this.pageId);
     this.nameInput = Selector('input[name="name"]');
-    this.dateInput = Selector('input[name="date"]');
     this.emailInput = Selector('input[name="email"]');
     this.descriptionInput = Selector('input[name="description"]');
+    this.imageInput = Selector('input[name="image"]');
+    this.dayInput = Selector('input[name="day"]');
+    this.monthInput = Selector('input[name="month"]');
+    this.yearInput = Selector('input[name="year"]');
     this.locationSelect = Selector('select[name="location"]');
     this.submitButton = Selector('input[type="submit"][value="Submit"]');
   }
@@ -24,12 +27,6 @@ class RegisterLostItemsPage {
       .typeText(this.nameInput, name, { paste: true });
   }
 
-  async isDateInputDisplayedAndType(testController, date) {
-    await testController
-      .expect(this.dateInput.exists).ok('The date input field should exist')
-      .typeText(this.dateInput, date, { paste: true });
-  }
-
   async isEmailInputDisplayedAndType(testController, email) {
     await testController
       .expect(this.emailInput.exists).ok('The email input should exist')
@@ -40,6 +37,30 @@ class RegisterLostItemsPage {
     await testController
       .expect(this.descriptionInput.exists).ok('The description should exist')
       .typeText(this.descriptionInput, description);
+  }
+
+  async isImageInputDisplayedAndType(testController, image) {
+    await testController
+      .expect(this.imageInput.exists).ok('The date input field should exist')
+      .typeText(this.imageInput, image, { paste: true });
+  }
+
+  async isDayInputDisplayedAndType(testController, day) {
+    await testController
+      .expect(this.dayInput.exists).ok('The date input field should exist')
+      .typeText(this.dayInput, day, { paste: true });
+  }
+
+  async isMonthInputDisplayedAndType(testController, month) {
+    await testController
+      .expect(this.monthInput.exists).ok('The date input field should exist')
+      .typeText(this.monthInput, month, { paste: true });
+  }
+
+  async isYearInputDisplayedAndType(testController, year) {
+    await testController
+      .expect(this.yearInput.exists).ok('The date input field should exist')
+      .typeText(this.yearInput, year, { paste: true });
   }
 
   async isLocationSelectDisplayedAndSelect(testController, location) {
