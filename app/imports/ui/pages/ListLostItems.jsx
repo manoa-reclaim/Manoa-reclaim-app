@@ -28,7 +28,7 @@ const ListLostItems = () => {
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">
-            <h2>Lost Item List</h2>
+            <h2>User Items</h2>
           </Col>
           <Table striped bordered hover>
             <thead>

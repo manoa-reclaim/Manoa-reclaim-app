@@ -32,7 +32,7 @@ const ListStuffAdmin = () => {
     <Container id="list-lost-items-admin-page" className="py-3">
       <Row className="justify-content-center">
         <Col>
-          <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
+          <Col className="text-center"><h2>All Items</h2></Col>
           <Row xs={1} md={2} lg={3} className="g-4">
             {itemList.map((item, index) => (<Col key={index}><StuffItemAdmin stuff={item} /></Col>))}
           </Row>
