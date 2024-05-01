@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { Stuffs } from '../../api/stuff/Stuff';
 
-const SearchLostItem = () => {
+const containerStyle = {
+  width: '100%', // Full width of the form
+  height: '400px',
+};
 
-  const currentYear = new Date().getFullYear();
+const center = {
+  lat: 21.2969,
+  lng: -157.8171,
+};
+
+const getHawaiiDate = () => {
+  const date = new Date();
+  const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+  return new Date(utc + (3600000 * -10));
+};
+
+const RegisterLostItem = () => {
+  const hawaiiDate = getHawaiiDate();
+  const [marker, setMarker] = useState(null);
+
+  const handleMapClick = (event) => {
+    setMarker({
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    });
+  };
+
+  const currentYear = hawaiiDate.getFullYear();
+  const currentMonth = hawaiiDate.toLocaleString('default', { month: 'long' });
+  const currentDay = hawaiiDate.getDate().toString();
 
   const formSchema = new SimpleSchema({
     name: String,
@@ -26,12 +54,12 @@ const SearchLostItem = () => {
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December',
       ],
-      defaultValue: 'January',
+      defaultValue: currentMonth,
     },
     day: {
       type: String,
       allowedValues: Array.from({ length: 31 }, (_, i) => (i + 1).toString()),
-      defaultValue: '1',
+      defaultValue: currentDay,
     },
     year: {
       type: String,
@@ -39,29 +67,31 @@ const SearchLostItem = () => {
       defaultValue: currentYear.toString(),
     },
     location: {
-      type: String,
-      allowedValues: ['POST', 'Lower Campus', 'Hamilton Library', 'Shidler', 'Campus Center', 'other'],
-      defaultValue: 'other',
+      type: Number,
+      optional: true,
     },
   });
 
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   const handleSubmit = (data, formRef) => {
-    const { name, email, description, image, month, day, year, location } = data;
+    const { name, email, description, image, month, day, year } = data;
     const date = `${month} ${day}, ${year}`;
+    const locationData = marker ? { latitude: marker.lat, longitude: marker.lng } : { latitude: null, longitude: null };
     const owner = Meteor.user().username;
-    Stuffs.collection.insert(
-      { name, email, description, image, date, location, owner },
-      (error) => {
-        if (error) {
-          swal('Error', error.message, 'error');
-        } else {
-          swal('Success', 'Item added successfully', 'success');
-          formRef.reset();
-        }
-      },
-    );
+
+    Stuffs.collection.insert({
+      name, email, description, image, date,
+      ...locationData,
+      owner,
+    }, (error) => {
+      if (error) {
+        swal('Error', error.message, 'error');
+      } else {
+        swal('Success', 'Item added successfully', 'success');
+        formRef.reset();
+      }
+    });
   };
 
   const handleImageChange = (event) => {
@@ -107,14 +137,35 @@ const SearchLostItem = () => {
                 </Col>
               </Row>
             </Form.Group>
-            <Form.Group controlId="location">
-              <SelectField name="location" />
-            </Form.Group>
             <Row className="mb-3">
               <Form.Group controlId="image" className="mb-0">
                 <Form.Label>Insert Image (JPG only):</Form.Label>
                 <Form.Control type="file" accept="image/jpeg" onChange={handleImageChange} />
               </Form.Group>
+              <LoadScript googleMapsApiKey="AIzaSyCOZT1jHy1kPTxmuBnc28qSGPIuVkECwgg">
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={16}
+                  onClick={handleMapClick}
+                >
+                  {marker && <Marker position={marker} />}
+                </GoogleMap>
+              </LoadScript>
+            </Row>
+            <Row>
+              <Col xs={6}>
+                <Form.Group>
+                  <Form.Label>Latitude:</Form.Label>
+                  <Form.Control type="text" readOnly value={marker ? marker.lat.toFixed(6) : ''} />
+                </Form.Group>
+              </Col>
+              <Col xs={6}>
+                <Form.Group>
+                  <Form.Label>Longitude:</Form.Label>
+                  <Form.Control type="text" readOnly value={marker ? marker.lng.toFixed(6) : ''} />
+                </Form.Group>
+              </Col>
             </Row>
             <Row>
               <Col>
@@ -129,4 +180,4 @@ const SearchLostItem = () => {
   );
 };
 
-export default SearchLostItem;
+export default RegisterLostItem;

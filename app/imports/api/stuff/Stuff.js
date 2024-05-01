@@ -26,9 +26,9 @@ class StuffsCollection {
         defaultValue: '',
       },
       location: {
-        type: String,
-        allowedValues: ['POST', 'Lower Campus', 'Hamilton Library', 'Shidler', 'Campus Center', 'other'],
-        defaultValue: 'other',
+        type: Object,
+        optional: true,
+        blackbox: true, // This allows any object structure
       },
       owner: String,
     });
