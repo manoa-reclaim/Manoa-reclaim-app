@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
+import { Bag } from 'react-bootstrap-icons';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const StuffItem = ({ stuff }) => (
-  <tr>
-    <td>{stuff.name}</td>
-    <td>{stuff.date}</td>
-    <td>{stuff.email}</td>
-    <td>{stuff.description}</td>
-    <td>{stuff.location}</td>
-  </tr>
+  <Card className="h-100">
+    <Card.Header className="d-flex justify-content-center bg-dark">
+      <Bag size={75} className="fs-5" />
+    </Card.Header>
+    <Card.Body>
+      <Card.Title>{stuff.name}</Card.Title>
+      <Card.Text>
+        <ul>
+          <li>Date found: {stuff.date}</li>
+          <li>Location found: {stuff.location}</li>
+          <li>Description: {stuff.description}</li>
+        </ul>
+      </Card.Text>
+    </Card.Body>
+  </Card>
 );
 
 // Require a document to be passed to this component.
