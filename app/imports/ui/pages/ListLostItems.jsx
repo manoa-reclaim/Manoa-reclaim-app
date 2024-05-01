@@ -24,7 +24,7 @@ const ListLostItems = () => {
     };
   }, []);
   return (ready ? (
-    <Container id="list-lost-items-admin-page" className="py-3">
+    <Container id="list-lost-items-page" className="py-3">
       <Row className="justify-content-center">
         <Col>
           <Col className="text-center"><h2>User Items</h2></Col>
