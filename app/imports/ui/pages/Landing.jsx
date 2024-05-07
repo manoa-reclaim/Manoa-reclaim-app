@@ -5,7 +5,7 @@ import { Col, Container, Row, Image } from 'react-bootstrap';
 const Landing = () => (
   <Container id="landing-page" fluid className="py-3">
     <Row className="align-middle text-center">
-      <Col className="d-flex flex-column justify-content-center">
+      <Col className="text-center">
         <h1>Welcome to Manoa Reclaim</h1>
       </Col>
     </Row>

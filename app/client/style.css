@@ -14,8 +14,9 @@
 body {
   --bs-dark: var(--matr-navbar-bg);
   --bs-dark-rgb: var(--matr-navbar-bg-rgb);
-  background: fixed center url("images/light-season-background.png");
+  background: fixed center url("images/Landing-background.JPG");
   background-size: cover;
+  backdrop-filter: blur(5px);
 }
 
 .navbar a.nav-link.active {
@@ -45,6 +46,12 @@ body .navbar {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+#landing-page p, #landing-page h1{
+  display: inline-block;
+  background-color: rgba(253,213,120,0.5);
+  padding: 5px;
 }
 
 footer, footer a {
