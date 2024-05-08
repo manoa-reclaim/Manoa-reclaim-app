@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { Bag } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 const StuffItemAdmin = ({ stuff }) => (
@@ -18,6 +19,7 @@ const StuffItemAdmin = ({ stuff }) => (
           <li>Description: {stuff.description}</li>
         </ul>
       </Card.Text>
+      <Link to={`/edit/${stuff._id}`}>Edit</Link>
     </Card.Body>
   </Card>
 );
