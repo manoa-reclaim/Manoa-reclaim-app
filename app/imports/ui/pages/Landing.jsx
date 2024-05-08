@@ -9,18 +9,18 @@ const Landing = () => (
         <h1>Welcome to Manoa Reclaim</h1>
       </Col>
     </Row>
-    <Row>
+    <Row className="py-3 align-middle text-center">
       <Col sm={8} className="py-3 text-center">
         <p>Found something someone may have lost? Make sure to drop it off at the Hamilton Library!</p>
         <p>Help us get it back to the correct owner!</p>
       </Col>
       <Col>
-        <Image src="" width="150px" alt="Card Example" />
+        <Image src="/images/card-example.png" width="250px" alt="Card Example" />
       </Col>
     </Row>
-    <Row className="align-middle text-center">
+    <Row className="py-3 align-middle text-center">
       <Col sm={4}>
-        <Image src="/images/sign-in.png" width="200px" alt="log in or sign up page image" />
+        <Image src="/images/sign-in.png" width="250px" alt="log in or sign up page image" />
       </Col>
       <Col sm={8} className="py-3 text-center">
         <p> You can log in from right up button or click <a href="/signin">here</a></p>
