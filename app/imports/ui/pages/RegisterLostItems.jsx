@@ -77,12 +77,12 @@ const RegisterLostItem = () => {
   const handleSubmit = (data, formRef) => {
     const { name, email, description, image, month, day, year } = data;
     const date = `${month} ${day}, ${year}`;
-    const locationData = marker ? { latitude: marker.lat, longitude: marker.lng } : { latitude: null, longitude: null };
+    const locationData = marker ? { latitude: marker.lat, longitude: marker.lng } : {};
     const owner = Meteor.user().username;
 
     Stuffs.collection.insert({
       name, email, description, image, date,
-      ...locationData,
+      location: locationData,
       owner,
     }, (error) => {
       if (error) {

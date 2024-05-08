@@ -1,31 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
+import { Bag } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-const StuffItem = ({ stuff }) => {
-  let displayLocation = stuff.location;
-  try {
-    // Attempt to parse the location string as JSON
-    const locationObj = JSON.parse(stuff.location);
-    if (locationObj.lat && locationObj.lng) {
-      // If parsing is successful and lat/lng are found, format the display location
-      displayLocation = `Lat: ${locationObj.lat.toFixed(3)}, Lng: ${locationObj.lng.toFixed(3)}`;
-    }
-  } catch (e) {
-    // If there's an error in parsing, assume it's a regular string
-    displayLocation = stuff.location;
-  }
-
-  return (
-    <tr>
-      <td>{stuff.name}</td>
-      <td>{stuff.date}</td>
-      <td>{stuff.email}</td>
-      <td>{stuff.description}</td>
-      <td>{displayLocation}</td>
-    </tr>
-  );
-};
+const StuffItem = ({ stuff }) => (
+  <Card className="h-100">
+    <Card.Header className="d-flex justify-content-center bg-dark">
+      <Bag size={75} className="fs-5" />
+    </Card.Header>
+    <Card.Body>
+      <Card.Title>{stuff.name}</Card.Title>
+      <Card.Text>
+        <ul>
+          <li>Date found: {stuff.date}</li>
+          <li>Location found: {stuff.location && stuff.location.latitude && stuff.location.longitude ? (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${stuff.location.latitude},${stuff.location.longitude}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ({stuff.location.latitude.toFixed(6)}, {stuff.location.longitude.toFixed(6)})
+            </a>
+          ) : 'Not specified'}
+          </li>
+          <li>Description: {stuff.description}</li>
+        </ul>
+      </Card.Text>
+      <Link to={`/edit/${stuff._id}`}>Edit</Link>
+    </Card.Body>
+  </Card>
+);
 
 // Require a document to be passed to this component.
 StuffItem.propTypes = {
@@ -34,7 +40,10 @@ StuffItem.propTypes = {
     date: PropTypes.string,
     email: PropTypes.string,
     description: PropTypes.string,
-    location: PropTypes.string, // location is treated as a string, but can contain JSON data
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+    }),
     _id: PropTypes.string,
   }).isRequired,
 };

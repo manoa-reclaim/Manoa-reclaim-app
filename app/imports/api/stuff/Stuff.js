@@ -28,7 +28,15 @@ class StuffsCollection {
       location: {
         type: Object,
         optional: true,
-        blackbox: true, // This allows any object structure
+        defaultValue: {},
+      },
+      'location.latitude': {
+        type: Number,
+        optional: true,
+      },
+      'location.longitude': {
+        type: Number,
+        optional: true,
       },
       owner: String,
     });
