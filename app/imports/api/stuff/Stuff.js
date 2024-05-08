@@ -26,9 +26,17 @@ class StuffsCollection {
         defaultValue: '',
       },
       location: {
-        type: String,
-        allowedValues: ['POST', 'Lower Campus', 'Hamilton Library', 'Shidler', 'Campus Center', 'other'],
-        defaultValue: 'other',
+        type: Object,
+        optional: true,
+        defaultValue: {},
+      },
+      'location.latitude': {
+        type: Number,
+        optional: true,
+      },
+      'location.longitude': {
+        type: Number,
+        optional: true,
       },
       owner: String,
     });
