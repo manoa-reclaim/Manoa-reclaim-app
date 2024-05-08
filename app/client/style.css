@@ -14,20 +14,21 @@
 body {
   --bs-dark: var(--matr-navbar-bg);
   --bs-dark-rgb: var(--matr-navbar-bg-rgb);
-  background: fixed center url("images/light-season-background.png");
+  background: fixed center url("images/Landing-background.JPG");
   background-size: cover;
+  backdrop-filter: blur(5px);
 }
 
-.navbar a.nav-link.active {
-  color: var(--matr-navbar-highlight-text);
+/*.navbar a.nav-link.active {
+  color: var(--matr-navbar-bg);
 }
-
+*/
 body .navbar {
-  --bs-navbar-active-color: var(--matr-navbar-highlight-text);
+  /*--bs-navbar-active-color: var(--matr-navbar-bg);*/
   --bs-navbar-brand-color: var(--matr-navbar-text-color);
-  --bs-navbar-brand-hover-color: var(--matr-navbar-highlight-text);
+  /*--bs-navbar-brand-hover-color: var(--matr-navbar-bg);*/
   --bs-navbar-color: var(--matr-navbar-text-color);
-  --bs-navbar-hover-color: var(--matr-navbar-highlight-text);
+  /*--bs-navbar-hover-color: var(--matr-navbar-bg);*/
 }
 
 .bg-dark a.dropdown-item {
@@ -39,10 +40,15 @@ body .navbar {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
+#root {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 18px;
+}
 /* Define custom styles */
-.gray-background {
+/*.gray-background {
   background-color: var(--matr-navbar-bg);
-  color: var(--bs-dark);
+  color: var(--body-text-color);
   padding-top: 10px;
   padding-bottom: 20px;
 }
@@ -50,3 +56,4 @@ body .navbar {
 footer, footer a {
   color: var(--matr-navbar-text-color);
 }
+*/
