@@ -142,16 +142,21 @@ const RegisterLostItem = () => {
                 <Form.Label>Insert Image (JPG only):</Form.Label>
                 <Form.Control type="file" accept="image/jpeg" onChange={handleImageChange} />
               </Form.Group>
-              <LoadScript googleMapsApiKey="AIzaSyCOZT1jHy1kPTxmuBnc28qSGPIuVkECwgg">
-                <GoogleMap
-                  mapContainerStyle={containerStyle}
-                  center={center}
-                  zoom={16}
-                  onClick={handleMapClick}
-                >
-                  {marker && <Marker position={marker} />}
-                </GoogleMap>
-              </LoadScript>
+            </Row>
+            <Row>
+              <Form.Group controlId="location">
+                <Form.Label>Choose where the item was found (Approximate location is okay):</Form.Label>
+                <LoadScript googleMapsApiKey="AIzaSyCOZT1jHy1kPTxmuBnc28qSGPIuVkECwgg">
+                  <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={16}
+                    onClick={handleMapClick}
+                  >
+                    {marker && <Marker position={marker} />}
+                  </GoogleMap>
+                </LoadScript>
+              </Form.Group>
             </Row>
             <Row>
               <Col xs={6}>

@@ -70,7 +70,8 @@ const EditStuff = () => {
   }, [_id]);
 
   const [defaultValues, setDefaultValues] = useState(null);
-  const [marker, setMarker] = useState(null);
+  const [marker, setMarker] = useState(center);
+  const [image, setImage] = useState(''); // For storing the base64 image data
 
   useEffect(() => {
     if (doc) {
@@ -84,7 +85,8 @@ const EditStuff = () => {
         day,
         year,
       });
-      if (doc.location) {
+      setImage(doc.image);
+      if (doc.location && doc.location.latitude && doc.location.longitude) {
         setMarker({ lat: doc.location.latitude, lng: doc.location.longitude });
       }
     }
@@ -98,8 +100,22 @@ const EditStuff = () => {
     setMarker(newMarker);
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const imageData = reader.result;
+      setImage(imageData); // Set the image data for submission and preview
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = (data) => {
-    const { name, email, description, image, month, day, year } = data;
+    const { name, email, description, month, day, year } = data;
     const date = `${month} ${day}, ${year}`;
     const locationData = marker ? { latitude: marker.lat, longitude: marker.lng } : {};
     Stuffs.collection.update(_id, {
@@ -143,16 +159,39 @@ const EditStuff = () => {
               </Row>
             </Form.Group>
             <Row className="mb-3">
-              <LoadScript googleMapsApiKey="AIzaSyCOZT1jHy1kPTxmuBnc28qSGPIuVkECwgg">
-                <GoogleMap
-                  mapContainerStyle={containerStyle}
-                  center={marker || center}
-                  zoom={16}
-                  onClick={handleMapClick}
-                >
-                  {marker && <Marker position={marker} />}
-                </GoogleMap>
-              </LoadScript>
+              <Form.Group controlId="image" className="mb-0">
+                <Form.Label>Insert Image (JPG only):</Form.Label>
+                <Form.Control type="file" accept="image/jpeg" onChange={handleImageChange} />
+              </Form.Group>
+            </Row>
+            <Row>
+              <Form.Group controlId="location">
+                <Form.Label>Choose where the item was found (Approximate location is okay):</Form.Label>
+                <LoadScript googleMapsApiKey="AIzaSyCOZT1jHy1kPTxmuBnc28qSGPIuVkECwgg" loadingElement={<div>Loading...</div>}>
+                  <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={16}
+                    onClick={handleMapClick}
+                  >
+                    {marker && <Marker position={marker} />}
+                  </GoogleMap>
+                </LoadScript>
+              </Form.Group>
+            </Row>
+            <Row>
+              <Col xs={6}>
+                <Form.Group>
+                  <Form.Label>Latitude:</Form.Label>
+                  <Form.Control type="text" readOnly value={marker ? marker.lat.toFixed(6) : ''} />
+                </Form.Group>
+              </Col>
+              <Col xs={6}>
+                <Form.Group>
+                  <Form.Label>Longitude:</Form.Label>
+                  <Form.Control type="text" readOnly value={marker ? marker.lng.toFixed(6) : ''} />
+                </Form.Group>
+              </Col>
             </Row>
             <Row>
               <Col>
