@@ -99,21 +99,6 @@ const EditStuff = () => {
     };
     setMarker(newMarker);
   };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const imageData = reader.result;
-      setImage(imageData); // Set the image data for submission and preview
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleSubmit = (data) => {
     const { name, email, description, month, day, year } = data;
     const date = `${month} ${day}, ${year}`;
@@ -158,12 +143,6 @@ const EditStuff = () => {
                 </Col>
               </Row>
             </Form.Group>
-            <Row className="mb-3">
-              <Form.Group controlId="image" className="mb-0">
-                <Form.Label>Insert Image (JPG only):</Form.Label>
-                <Form.Control type="file" accept="image/jpeg" onChange={handleImageChange} />
-              </Form.Group>
-            </Row>
             <Row>
               <Form.Group controlId="location">
                 <Form.Label>Choose where the item was found (Approximate location is okay):</Form.Label>

@@ -93,21 +93,6 @@ const RegisterLostItem = () => {
       }
     });
   };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const imageData = reader.result;
-      bridge.onChange('image', imageData);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <Container id="register-lost-items-page" className="py-3">
       <Row className="justify-content-center">
@@ -137,12 +122,6 @@ const RegisterLostItem = () => {
                 </Col>
               </Row>
             </Form.Group>
-            <Row className="mb-3">
-              <Form.Group controlId="image" className="mb-0">
-                <Form.Label>Insert Image (JPG only):</Form.Label>
-                <Form.Control type="file" accept="image/jpeg" onChange={handleImageChange} />
-              </Form.Group>
-            </Row>
             <Row>
               <Form.Group controlId="location">
                 <Form.Label>Choose where the item was found (Approximate location is okay):</Form.Label>
