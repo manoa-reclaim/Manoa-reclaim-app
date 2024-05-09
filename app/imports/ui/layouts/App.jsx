@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Landing from '../pages/Landing';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import RegisterLostItem from '../pages/RegisterLostItems';
-import SearchLostItem from '../pages/SearchLostItem';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import UhSignUp from '../pages/UhSignUp';
@@ -38,7 +37,6 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListLostItems /></ProtectedRoute>} />
           <Route path="/register" element={<ProtectedRoute><RegisterLostItem /></ProtectedRoute>} />
-          <Route path="/search" element={<ProtectedRoute><SearchLostItem /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
