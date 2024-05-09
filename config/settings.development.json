@@ -3,38 +3,5 @@
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme" }
   ],
-  "defaultData": [
-    {
-      "name": "Basket",
-      "date": "4/22",
-      "email": "john@foo.com",
-      "description": "woven basket",
-      "location": { "latitude": 21.2990, "longitude": -157.8190 },
-      "owner": "john@foo.com"
-    },
-    {
-      "name": "Boogie Board",
-      "date": "3/12",
-      "email": "john@foo.com",
-      "description": "big boogie board",
-      "location": { "latitude": 21.2969, "longitude": -157.8171 },
-      "owner": "admin@foo.com"
-    },
-    {
-      "name": "Macbook Air",
-      "date": "4/06",
-      "email": "ksutton2@hawaii.edu",
-      "description": "Space Grey model, no case or cover. Wallpaper is a picture of a beach",
-      "location": { "latitude": 21.2970, "longitude": -157.8160 },
-      "owner": "admin@foo.com"
-    },
-    {
-      "name": "Sony Headphones",
-      "date": "3/12",
-      "email": "ksutton2@hawaii.edu",
-      "description": "Black WH-1000XM4",
-      "location": { "latitude": 21.2980, "longitude": -157.8180 },
-      "owner": "admin@foo.com"
-    }
-  ]
+  "defaultData": []
 }
