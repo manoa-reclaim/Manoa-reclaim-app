@@ -3,5 +3,13 @@
     { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
     { "email": "john@foo.com", "password": "changeme", "role": "admin" }
   ],
-  "defaultData": []
+  "defaultData": [ {
+    "name": "Basket",
+    "date": "4/22",
+    "email": "john@foo.com",
+    "description": "woven basket",
+    "location": { "latitude": 21.2990, "longitude": -157.8190 },
+    "owner": "john@foo.com"
+  }
+  ]
 }
