@@ -24,7 +24,7 @@ const Landing = () => (
       </Col>
       <Col sm={8} className="py-3 text-center">
         <p> You can log in from right up button or click <a href="/signin">here</a></p>
-        <p>If you are first time to visit, please sign up from  right up button or click <a href="/signup">here</a></p>
+        <p>If you are first time to visit, please sign up from  right up button or click <a href="/uhsignup">here</a></p>
         <p>If you&apos;d like to learn more about how to use it, please visit <a href="https://manoa-reclaim.github.io/">our homepage</a>.</p>
       </Col>
     </Row>
