@@ -1,8 +1,13 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
+import { check } from 'meteor/check';
+import { Stuffs } from '../../api/stuff/Stuff';
 
-/* eslint-disable no-console */
-
+Meteor.methods({
+  'stuffs.remove'(stuffId) {
+    check(stuffId, String);
+    Stuffs.collection.remove(stuffId);
+  },
+});
 // Initialize the database with a default data document.
 const addData = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
